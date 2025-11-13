@@ -11,34 +11,21 @@
 </head>
 <body>
   <h1>Redirect URL Service</h1>
-  <p>Chọn link để chuyển hướng:</p>
-
-  <button class="btn" onclick="go('google')">Go to Google</button>
-  <button class="btn" onclick="go('youtube')">Go to YouTube</button>
-  <button class="btn" onclick="go('github')">Go to GitHub</button>
-
+  
   <script>
-    const urls = {
-      google: "https://google.com",
-      youtube: "https://youtube.com",
-      github: "https://github.com"
-    };
+    // Bước 1: Tạo mảng với 10 chuỗi
+	const mangChuoi = [
+	  "https://google.com",
+	  "https://facebook.com",
+	  "https://youtube.com"
+	];
 
-    function go(site) {
-      if (urls[site]) {
-        window.location.href = urls[site];
-      } else {
-        alert("Không tìm thấy URL!");
-      }
-    }
+	// Bước 2: Chọn ngẫu nhiên một phần tử từ mảng
+	const indexNgauNhien = Math.floor(Math.random() * mangChuoi.length);
+	const chuoiNgauNhien = mangChuoi[indexNgauNhien];
 
-    // Tự động redirect nếu có param trong URL
-    // Ví dụ: ?to=google → chuyển ngay
-    const params = new URLSearchParams(window.location.search);
-    const redirectTo = params.get('to');
-    if (redirectTo && urls[redirectTo]) {
-      window.location.href = urls[redirectTo];
-    }
+	// Bước 3: In kết quả
+	window.location.href = chuoiNgauNhien;
   </script>
 </body>
 </html>
